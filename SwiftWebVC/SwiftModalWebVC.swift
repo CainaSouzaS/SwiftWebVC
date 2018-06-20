@@ -12,6 +12,7 @@ public class SwiftModalWebVC: UINavigationController {
     
     public enum SwiftModalWebVCTheme {
         case lightBlue, lightBlack, dark
+        case custom(doneColor: UIColor, buttonColor: UIColor, titleColor: UIColor, navBarColor: UIColor)
     }
     public enum SwiftModalWebVCDismissButtonStyle {
         case arrow, cross
@@ -66,6 +67,11 @@ public class SwiftModalWebVC: UINavigationController {
             webViewController.buttonColor = UIColor.white
             webViewController.titleColor = UIColor.groupTableViewBackground
             UINavigationBar.appearance().barStyle = UIBarStyle.black
+        case let .custom(doneColor, buttonColor, titleColor, navBarColor):
+            doneButton.tintColor = doneColor
+            webViewController.buttonColor = buttonColor
+            webViewController.titleColor = titleColor
+            UINavigationBar.appearance().barTintColor = navBarColor
         }
         
         if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
